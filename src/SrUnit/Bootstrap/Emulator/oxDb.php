@@ -2,6 +2,8 @@
 
 namespace SrUnit\Bootstrap\Emulator;
 
+use SrUnit\Mock\Factory;
+
 class oxDb
 {
     /**
@@ -22,7 +24,7 @@ class oxDb
      */
     public static function getInstance()
     {
-        $db = \SrUnit\Mock\Factory::create('\oxDb')->getMock();
+        $db = Factory::create('\oxDb')->getMock();
         $db->shouldIgnoreMissing();
         $db->shouldReceive()->andReturn();
 
@@ -40,7 +42,7 @@ class oxDb
      */
     public static function getDb( $iFetchMode = oxDb::FETCH_MODE_NUM )
     {
-        $db = \SrUnit\Mock\Factory::create('\oxLegacyDb')->getMock();
+        $db = Factory::create('\oxLegacyDb')->getMock();
         $db->shouldIgnoreMissing();
         $db->shouldReceive()->andReturn();
 
