@@ -1,6 +1,6 @@
 <?php
 
-namespace SrUnit\Bootstrap\Emulator;
+namespace SrUnit\Bootstrap\Emulation;
 
 use SrUnit\Mock\Factory;
 

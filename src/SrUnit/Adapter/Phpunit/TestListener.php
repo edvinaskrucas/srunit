@@ -2,6 +2,8 @@
 
 namespace SrUnit\Adapter\Phpunit;
 
+use Mockery\Adapter\Phpunit\PHPUnit_Framework_Test;
+
 /**
  * Class TestListener
  *
