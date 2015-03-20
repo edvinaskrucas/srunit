@@ -1,16 +1,17 @@
 <?php
 
-namespace SrUnit\Mock;
+namespace SrUnit\Tests\Mock;
 
 use PHPUnit_Framework_TestCase;
 use Mockery;
+use SrUnit\Mock\Factory;
 
 /**
  * Class FactoryTest
  *
  * @link http://www.superReal.de
  * @copyright (C) superReal GmbH | Create Commerce
- * @package SrUnit\Mock
+ * @package SrUnit\Tests\Mock
  * @author Jens Wiese <j.wiese AT superreal.de>
  */
 class FactoryTest extends PHPUnit_Framework_TestCase
@@ -24,6 +25,10 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     /** @var Mockery\MockInterface | \SrOxUtilsObject */
     protected $oxUtilsObject;
 
+    public static function setUpBeforeClass()
+    {
+        date_default_timezone_set('UTC');
+    }
 
     protected function setUp()
     {
@@ -149,15 +154,15 @@ class FactoryTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\stdClass', $mock);
     }
 
-    public function testCreatingOxidParentClass()
+    public function testCreatingParentClass()
     {
-        $mock = Factory::createParentClass('\stdClass')->getMock();
+        $mock = Factory::createParentClass('\whateverClass_parent')->getMock();
 
         $mock->shouldReceive('getFoo')->andReturn('bar');
 
-        $actualObject = new \stdClass_parent();
+        $actualObject = new \whateverClass_parent();
 
-        $this->assertInstanceOf('\stdClass_parent', $actualObject);
+        $this->assertInstanceOf('\whateverClass_parent', $actualObject);
         $this->assertEquals('bar', $actualObject->getFoo());
     }
 

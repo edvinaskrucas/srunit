@@ -60,7 +60,7 @@ class OxidLoader
      */
     public function load()
     {
-        $path = $this->directoryFinder->getShopBaseDir() . 'bootstrap.php';
+        $path = $this->directoryFinder->getShopBaseDir() . '/bootstrap.php';
 
         if (file_exists($path)) {
             require_once $path;
@@ -74,6 +74,14 @@ class OxidLoader
 
         if (false === class_exists('\oxDb')) {
             class_alias('\SrUnit\Bootstrap\Emulation\oxDb', '\oxDb');
+        }
+
+        if (false === class_exists('\oxField')) {
+            class_alias('\SrUnit\Bootstrap\Emulation\oxField', '\oxField');
+        }
+
+        if (false === class_exists('\oxRegistry')) {
+            class_alias('\SrUnit\Bootstrap\Emulation\oxRegistry', '\oxRegistry');
         }
 
         $this->isEmulated = true;
